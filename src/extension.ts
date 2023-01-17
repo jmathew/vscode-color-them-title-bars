@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import * as vscode from 'vscode';
 
 export async function activate(context: vscode.ExtensionContext) {
   let disposable = vscode.commands.registerTextEditorCommand(
-    'vscode-color-them-title-bars.colorThemTitleBars',
+    'vscode-color-them-top-bars.colorThemTopBars',
     async (textEditor: vscode.TextEditor, edit: vscode.TextEditorEdit) => {
       await colorizeTitleBar();
     }
@@ -50,7 +51,7 @@ async function colorizeTitleBar() {
     vscode.ConfigurationTarget.Workspace
   );
 
-  vscode.window.showInformationMessage('Colorized them title bars!');
+  vscode.window.showInformationMessage('Successfully colorized this top bar!');
 }
 
 // https://stackoverflow.com/a/16348977/730326

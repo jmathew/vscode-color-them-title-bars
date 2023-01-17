@@ -1,11 +1,11 @@
 {
-  "name": "vscode-color-them-title-bars",
-  "displayName": "Color Them Title Bars",
+  "name": "vscode-color-them-top-bars",
+  "displayName": "Color Them Top Bars",
   "publisher": "jeffmathew",
   "description": "Colorize the title bars of your open editors to find them easily in the task switcher.",
   "repository": {
     "type": "git",
-    "url": "https://github.com/jmathew/vscode-color-them-title-bars"
+    "url": "https://github.com/jmathew/vscode-color-them-top-bars"
   },
   "version": "0.0.1",
   "engines": {
@@ -16,14 +16,14 @@
   ],
   "activationEvents": [
     "onStartupFinished",
-    "onCommand:vscode-color-them-title-bars.colorThemTitleBars"
+    "onCommand:vscode-color-them-top-bars.colorThemTopBars"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "vscode-color-them-title-bars.colorThemTitleBars",
-        "title": "Color Them Title Bars"
+        "command": "vscode-color-them-top-bars.colorThemTopBars",
+        "title": "Color Them Top Bars"
       }
     ]
   },
