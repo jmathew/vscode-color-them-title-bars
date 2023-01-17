@@ -33,7 +33,7 @@ async function colorizeTitleBar() {
   const settings = vscode.workspace.getConfiguration('workbench', vscode.workspace.workspaceFile);
 
   // Gotta use inspect to be able to find only the workspace settings. .get() will combine with user settings.
-  const existing = settings.inspect(colorCustomizationsSection)?.workspaceValue as any;
+  const existing = settings.inspect(colorCustomizationsSection)?.workspaceValue as any ?? {};
 
   // If customizations already exist do nothing.
   if (

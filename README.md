@@ -12,6 +12,10 @@ Activate by using command 'Color This Top Bar'. Or go to settings and turn on 'A
 
 ## Release Notes
 
-### 1.0.0
+### 0.0.1
 
 Initial release.
+
+### 0.0.2
+
+Fixed extension not working when workspace settings are empty.
