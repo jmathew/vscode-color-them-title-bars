@@ -1,43 +1,57 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export async function activate(context: vscode.ExtensionContext) {
+  let disposable = vscode.commands.registerTextEditorCommand(
+    'vscode-color-them-title-bars.colorThemTitleBars',
+    async (textEditor: vscode.TextEditor, edit: vscode.TextEditorEdit) => {
+      await colorizeTitleBar();
+    }
+  );
+  context.subscriptions.push(disposable);
+
+  await colorizeTitleBar();
+}
+
+// This method is called when your extension is deactivated
+export function deactivate() { }
+
+async function colorizeTitleBar() {
   if (vscode.workspace.name === undefined) {
+    vscode.window.showInformationMessage('No current workspace, colorization was not applied!');
     return;
   }
 
   const colorCustomizationsSection = 'colorCustomizations';
 
   const settings = vscode.workspace.getConfiguration('workbench', vscode.workspace.workspaceFile);
-  const existing = settings.get(colorCustomizationsSection) as any;
+
+  // Gotta use inspect to be able to find only the workspace settings. .get() will combine with user settings.
+  const existing = settings.inspect(colorCustomizationsSection)?.workspaceValue as any;
 
   // If customizations already exist do nothing.
-  // if (
-  //   existing["titleBar.activeBackground"] !== undefined
-  //   || existing["titleBar.activeForeground"] !== undefined
-  // ) {
-  //   return;
-  // }
+  if (
+    existing["titleBar.activeBackground"] !== undefined
+    || existing["titleBar.activeForeground"] !== undefined
+  ) {
+    vscode.window.showInformationMessage('Existing settings found for \'titleBar\', colorization was not applied!');
+    return;
+  }
 
   const background = stringToColor(vscode.workspace.name);
   const foreground = invertColor(background, true);
 
-  // TODO: This update seems to add some other settings from user settings i think.
   await settings.update(
     colorCustomizationsSection,
     {
+      ...existing,
       "titleBar.activeBackground": background,
       "titleBar.activeForeground": foreground,
     },
     vscode.ConfigurationTarget.Workspace
   );
-}
 
-// This method is called when your extension is deactivated
-export function deactivate() { }
+  vscode.window.showInformationMessage('Colorized them title bars!');
+}
 
 // https://stackoverflow.com/a/16348977/730326
 function stringToColor(text: string) {
