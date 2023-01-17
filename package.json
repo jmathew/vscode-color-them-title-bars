@@ -23,7 +23,19 @@
     "commands": [
       {
         "command": "vscode-color-them-top-bars.colorThemTopBars",
-        "title": "Color Them Top Bars"
+        "title": "Color This Top Bar"
+      }
+    ],
+    "configuration": [
+      {
+        "title": "Color Them Top Bars",
+        "properties": {
+          "vscode-color-them-top-bars.applyOnStart": {
+            "description": "Colorize title bars automatically when any new vscode instance is started.",
+            "type": "boolean",
+            "default": false
+          }
+        }
       }
     ]
   },

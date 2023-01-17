@@ -2,6 +2,8 @@
 import * as vscode from 'vscode';
 
 export async function activate(context: vscode.ExtensionContext) {
+
+  // Add colorize command.
   let disposable = vscode.commands.registerTextEditorCommand(
     'vscode-color-them-top-bars.colorThemTopBars',
     async (textEditor: vscode.TextEditor, edit: vscode.TextEditorEdit) => {
@@ -10,10 +12,14 @@ export async function activate(context: vscode.ExtensionContext) {
   );
   context.subscriptions.push(disposable);
 
-  await colorizeTitleBar();
+  // Run on start if desired.
+  const extensionSettings = vscode.workspace.getConfiguration('vscode-color-them-top-bars');
+
+  if (extensionSettings.get('applyOnStart')) {
+    await colorizeTitleBar();
+  }
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() { }
 
 async function colorizeTitleBar() {
