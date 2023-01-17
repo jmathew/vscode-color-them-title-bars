@@ -6,9 +6,9 @@ Activate by using command 'Color This Top Bar'. Or go to settings and turn on 'A
 
 ## Features
 
-* Adds new command to colorize the titlebar of the current editor instance.
+* Adds new command to colorize the title bar of the current editor instance.
 * Option to automatically colorize instances on start.
-* Does not override existing settings.
+* Does not override existing color settings.
 
 ## Release Notes
 
