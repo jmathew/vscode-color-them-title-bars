@@ -7,7 +7,7 @@
     "type": "git",
     "url": "https://github.com/jmathew/vscode-color-them-top-bars"
   },
-  "version": "0.0.2",
+  "version": "0.0.3",
   "engines": {
     "vscode": "^1.74.0"
   },
@@ -35,10 +35,10 @@
             "type": "boolean",
             "default": false
           },
-          "vscode-color-them-top-bars.setInactiveBackground": {
+          "vscode-color-them-top-bars.setInactive": {
             "description": "Colorize inactive title bars.",
             "type": "boolean",
-            "default": false
+            "default": true
           }
         }
       }
