@@ -16,6 +16,7 @@ Activate by using command 'Color This Top Bar'. Or go to settings and turn on 'A
     * `titleBar.activeBackground`
     * `titleBar.activeForeground`
     * `titleBar.inactiveBackground`
+    * `titleBar.inactiveForeground`
 
 ## Release Notes
 
