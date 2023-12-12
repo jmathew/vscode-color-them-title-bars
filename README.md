@@ -27,3 +27,8 @@ Initial release.
 ### 0.0.2
 
 Fixed extension not working when workspace settings are empty.
+
+
+### 0.0.3
+
+Add option to colorize even when window is inactive. Option defaults to on.
