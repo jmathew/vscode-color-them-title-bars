@@ -39,6 +39,8 @@ async function colorizeTitleBar() {
   if (
     existing["titleBar.activeBackground"] !== undefined
     || existing["titleBar.activeForeground"] !== undefined
+    || existing["titleBar.inactiveBackground"] !== undefined
+    || existing["titleBar.inactiveForeground"] !== undefined
   ) {
     vscode.window.showInformationMessage('Existing settings found for \'titleBar\', colorization was not applied!');
     return;
@@ -47,12 +49,21 @@ async function colorizeTitleBar() {
   const background = stringToColor(vscode.workspace.name);
   const foreground = invertColor(background, true);
 
+  var colorSettings: Record<string, any> = {
+    "titleBar.activeBackground": background,
+    "titleBar.activeForeground": foreground,
+  };
+  const extensionSettings = vscode.workspace.getConfiguration('vscode-color-them-top-bars');
+  if (extensionSettings.get('setInactive')) {
+    colorSettings["titleBar.inactiveBackground"] = background;
+    colorSettings["titleBar.inactiveForeground"] = foreground;
+  }
+
   await settings.update(
     colorCustomizationsSection,
     {
       ...existing,
-      "titleBar.activeBackground": background,
-      "titleBar.activeForeground": foreground,
+      ...colorSettings,
     },
     vscode.ConfigurationTarget.Workspace
   );

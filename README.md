@@ -10,6 +10,14 @@ Activate by using command 'Color This Top Bar'. Or go to settings and turn on 'A
 * Option to automatically colorize instances on start.
 * Does not override existing color settings.
 
+## Troubleshooting / FAQ
+* Colorization was skipped on a project I'd like to colorize.
+  * Colorization will be skipped if any of the following settings are set in the project's `settings.json`. Delete or comment out the entries and reload the window to make the colorization apply. 
+    * `titleBar.activeBackground`
+    * `titleBar.activeForeground`
+    * `titleBar.inactiveBackground`
+    * `titleBar.inactiveForeground`
+
 ## Release Notes
 
 ### 0.0.1
