@@ -10,6 +10,8 @@
     "typescript.tsc.autoDetect": "off",
     "workbench.colorCustomizations": {
       "titleBar.activeBackground": "#cb6",
-      "titleBar.activeForeground": "#FFFFFF"
+      "titleBar.activeForeground": "#FFFFFF",
+      "titleBar.inactiveBackground": "#cb6",
+      "titleBar.inactiveForeground": "#FFFFFF"
     }
 }
